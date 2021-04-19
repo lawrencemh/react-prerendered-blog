@@ -1,0 +1,57 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,700;1,400&display=swap');
+
+p, h1, h2, h3, h4, h5, h6 {
+    @apply mt-4;
+}
+
+:root {
+    font-size: 20px;
+}
+
+#root {
+    @apply text-gray-800 antialiased font-body;
+}
+
+.markDown {
+    &__container {
+        pre {
+            @apply mt-4 p-3 bg-gray-200 text-black rounded-md overflow-x-scroll;
+        }
+
+        blockquote {
+            @apply mt-4 italic pl-3 border-gray-200 border-l-8;
+        }
+
+        p > code {
+            @apply p-1 rounded bg-red-100 text-red-800;
+        }
+    }
+}
+
+h1 {
+    @apply text-3xl font-bold;
+}
+
+h2 {
+    @apply text-2xl;
+}
+
+h3 {
+    @apply text-xl;
+}
+
+h4 {
+    @apply text-lg uppercase font-light;
+}
+
+h5 {
+    @apply text-xs uppercase font-light;
+}
+
+h1, h2, h3 {
+    @apply font-bold;
+}
