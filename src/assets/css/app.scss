@@ -27,7 +27,11 @@ p, h1, h2, h3, h4, h5, h6 {
         }
 
         p > code {
-            @apply p-1 rounded bg-red-100 text-red-800;
+            @apply p-0.5 rounded bg-red-100 text-red-800;
+        }
+
+        img {
+            @apply mx-auto;
         }
     }
 }
