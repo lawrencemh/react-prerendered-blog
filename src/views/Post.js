@@ -1,18 +1,26 @@
 import axios from 'axios';
 import {useState, useEffect} from 'react';
+import {useParams} from 'react-router-dom';
 import MarkdownRenderer from 'components/MarkdownRenderer';
 
 const Post = () => {
-    const [markdown, setMarkdown] = useState('');
+    const urlParams                   = useParams();
+    const [markdown, setMarkdown]     = useState('');
+    const [hasFetched, setHasFetched] = useState(false);
 
     useEffect(() => {
-        axios.get('/data/posts/test.md')
-            .then(response => {
-                setMarkdown(response.data);
-            })
-            .catch(error => {
-                console.error(error);
-            });
+        const permalink = urlParams?.slug;
+
+        if (permalink && !hasFetched) {
+            axios.get(`/data/posts/${permalink}.md`)
+                .then(response => {
+                    setMarkdown(response.data);
+                    setHasFetched(true);
+                })
+                .catch(error => {
+                    console.error(error);
+                });
+        }
     });
 
     return (
