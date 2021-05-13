@@ -1,0 +1,16 @@
+{
+    "items": [
+        {
+            "permalink": "test",
+            "title": "Hey this is my test and the title can change!",
+            "author_id": "9a0b7759-86e1-4588-9d17-47ee9ad33ebf",
+            "publish_at": "2020-01-01"
+        },
+        {
+            "permalink": "hello",
+            "title": "Hey and welcome to the blog",
+            "author_id": "9a0b7759-86e1-4588-9d17-47ee9ad33ebf",
+            "publish_at": "2020-01-02"
+        }
+    ]
+}
