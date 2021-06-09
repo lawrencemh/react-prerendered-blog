@@ -1,4 +1,5 @@
 import Post from 'views/Post';
+import Home from 'views/Home';
 import Header from 'components/Header';
 import ReduxStateObserver from 'components/ReduxStateObserver';
 import {
@@ -17,14 +18,17 @@ function App() {
                     <Route path="/posts/:slug">
                         <Post/>
                     </Route>
-                    <Route path="/category/:slug">
+                    <Route path="/categories/:slug">
                         <p>Category</p>
+                    </Route>
+                    <Route path="/authors/:author">
+                        <p>Author</p>
                     </Route>
                     <Route path="/archive">
                         <p>Archive</p>
                     </Route>
                     <Route exact path="/">
-                        Welcome home!
+                        <Home/>
                     </Route>
                     <Route path="*">
                         404

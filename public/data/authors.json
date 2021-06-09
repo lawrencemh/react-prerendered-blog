@@ -2,7 +2,8 @@
     {
         "id": "9a0b7759-86e1-4588-9d17-47ee9ad33ebf",
         "name": "Lawrence",
-        "image_src": null,
+        "slug": "lawrence",
+        "image_src": "https://randomuser.me/api/portraits/lego/6.jpg",
         "github_url": null
     }
 ]

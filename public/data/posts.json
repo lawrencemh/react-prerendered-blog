@@ -3,14 +3,32 @@
         {
             "permalink": "test",
             "title": "Hey this is my test and the title can change!",
+            "thumb_src": "https://cdn-images-1.medium.com/max/400/1*3cuoHpb9H7tHGBInT388JQ.gif",
             "author_id": "9a0b7759-86e1-4588-9d17-47ee9ad33ebf",
-            "publish_at": "2020-01-01"
+            "publish_at": "2020-01-01",
+            "category": "technology"
         },
         {
             "permalink": "hello",
             "title": "Hey and welcome to the blog",
             "author_id": "9a0b7759-86e1-4588-9d17-47ee9ad33ebf",
-            "publish_at": "2020-01-02"
+            "publish_at": "2021-05-28",
+            "category": "general"
+        },
+        {
+            "permalink": "linquito-launches-free-language-learning-app",
+            "title": "Linquito launches free language learning app",
+            "thumb_src": "https://i.ibb.co/C9p1cNr/Screenshot-2021-05-28-at-16-44-00.png",
+            "author_id": "9a0b7759-86e1-4588-9d17-47ee9ad33ebf",
+            "publish_at": "2021-03-01",
+            "category": "general"
+        },
+        {
+            "permalink": "hello",
+            "title": "Hey and welcome to the blog",
+            "author_id": "9a0b7759-86e1-4588-9d17-47ee9ad33ebf",
+            "publish_at": "2021-05-28",
+            "category": "general"
         }
     ]
 }

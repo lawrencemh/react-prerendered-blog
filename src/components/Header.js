@@ -1,4 +1,5 @@
 import config from 'blogConfig';
+import {Link} from 'react-router-dom';
 
 const Header = () => {
     const hasLogo         = config?.logo && config.logo.length > 0;
@@ -11,19 +12,19 @@ const Header = () => {
             <div className="px-4 sm:px-0 max-w-2xl w-full mx-auto grid grid-flow-col auto-cols-auto">
                 <div className="h-1 w-1"></div>
                 <div className="flex items-center justify-center text-3xl uppercase">
-                    <a href="/">
+                    <Link to='/'>
                         {
                             hasLogo
                                 ? <img className='max-w-48 w-full h-auto object-contain' src={config.logo}/>
                                 : config.name
                         }
-                    </a>
+                    </Link>
                 </div>
                 <div className="flex items-center justify-end tracking-wide">
                     {
                         hasExternalLink
                             ?
-                            <a className='rounded-full text-white text-xs py-2 px-4 bg-blue-700 hover:bg-blue-500 transition-colors'
+                            <a className='rounded-full text-white text-xs py-2 px-4 bg-primary hover:bg-primary-400 transition-colors'
                                target='_blank'
                                href={externalLink}>{externalCta}</a>
                             : false
