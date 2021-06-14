@@ -1,9 +1,11 @@
+import {Link} from 'react-router-dom';
+
 const Hashtag = ({hashtag}) => {
 
     return (
         <>
-            posted in <a className='hover:underline text-primary hover:text-primary-400 transition-colors'
-                         href={`/categories/${hashtag}`}>#{hashtag}</a>
+            posted in <Link className='hover:underline text-primary hover:text-primary-400 transition-colors'
+                         to={`/categories/${hashtag}`}>#{hashtag}</Link>
         </>
     );
 };

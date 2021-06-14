@@ -5,5 +5,12 @@
         "slug": "lawrence",
         "image_src": "https://randomuser.me/api/portraits/lego/6.jpg",
         "github_url": null
+    },
+    {
+        "id": "a78a326a-a27f-4d99-93b4-3cc24358daa2",
+        "name": "Robin",
+        "slug": "robin",
+        "image_src": "https://randomuser.me/api/portraits/lego/2.jpg",
+        "github_url": null
     }
 ]

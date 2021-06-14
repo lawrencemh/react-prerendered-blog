@@ -1,6 +1,8 @@
 import Post from 'views/Post';
 import Home from 'views/Home';
 import Header from 'components/Header';
+import AuthorList from 'views/AuthorList';
+import CategoryList from 'views/CategoryList';
 import ReduxStateObserver from 'components/ReduxStateObserver';
 import {
     BrowserRouter as Router,
@@ -19,10 +21,10 @@ function App() {
                         <Post/>
                     </Route>
                     <Route path="/categories/:slug">
-                        <p>Category</p>
+                        <CategoryList/>
                     </Route>
                     <Route path="/authors/:author">
-                        <p>Author</p>
+                        <AuthorList/>
                     </Route>
                     <Route path="/archive">
                         <p>Archive</p>

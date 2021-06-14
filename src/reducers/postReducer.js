@@ -7,6 +7,14 @@ const initialState = {
     fetched: false,
 };
 
+const expectedPostStructure = {
+    'permalink' : null,
+    'title'     : null,
+    'author_id' : null,
+    'publish_at': null,
+    'category'  : null,
+};
+
 const postReducer = (state = initialState, action) => {
     if (!action) {
         return state;
@@ -16,7 +24,11 @@ const postReducer = (state = initialState, action) => {
         case SET_POSTS:
             return {
                 ...state,
-                items  : action.payload,
+                items  : action?.payload.length
+                    ? action.payload.map(post => {
+                        return {...expectedPostStructure, ...post};
+                    })
+                    : null,
                 fetched: true,
             };
     }
