@@ -11,6 +11,7 @@
         {
             "permalink": "hello",
             "title": "Hey and welcome to the blog",
+            "thumb_src": "https://unsplash.com/photos/fLGtXkQycYY/download?w=640",
             "author_id": "9a0b7759-86e1-4588-9d17-47ee9ad33ebf",
             "publish_at": "2021-05-28",
             "category": "general"
@@ -24,11 +25,28 @@
             "category": "general"
         },
         {
-            "permalink": "hello",
+            "permalink": "welcome-blog",
             "title": "Hey and welcome to the blog",
+            "thumb_src": "https://unsplash.com/photos/61d2hT57MAE/download?force=true&w=640",
             "author_id": "a78a326a-a27f-4d99-93b4-3cc24358daa2",
-            "publish_at": "2021-05-28",
+            "publish_at": "2020-05-28",
             "category": "general"
+        },
+        {
+            "permalink": "12-places-visit-summer",
+            "title": "12 places to visit this summer",
+            "thumb_src": "https://unsplash.com/photos/eMkd0FuGKz8/download?force=true&w=640",
+            "author_id": "a78a326a-a27f-4d99-93b4-3cc24358daa2",
+            "publish_at": "2020-08-14",
+            "category": "travel"
+        },
+        {
+            "permalink": "5-best-hotels-cuba",
+            "title": "5 of the best hotels in Cuba",
+            "thumb_src": "https://unsplash.com/photos/4MTSE39Oqro/download?force=true&w=640",
+            "author_id": "a78a326a-a27f-4d99-93b4-3cc24358daa2",
+            "publish_at": "2020-06-18",
+            "category": "travel"
         }
     ]
 }

@@ -59,3 +59,11 @@ h5 {
 h1, h2, h3 {
     @apply font-bold;
 }
+
+.mainLayout {
+    @apply max-w-2xl mx-auto mb-12 mt-4 px-4;
+
+    @screen sm {
+        @apply mt-8 px-0;
+    }
+}

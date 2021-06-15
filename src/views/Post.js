@@ -35,7 +35,7 @@ const ConnectedPost = ({posts}) => {
     });
 
     return (
-        <div className='max-w-xl mx-auto my-12 px-4 sm:px-0'>
+        <div className='mainLayout'>
             <h1>{postMeta?.title}</h1>
             <div className="mt-4">
                 <PostHeader postMeta={postMeta}/>

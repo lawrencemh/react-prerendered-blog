@@ -18,7 +18,7 @@ const ConnectedAuthorList = ({authors, posts}) => {
 
     if (!author) {
         return (
-            <div className='max-w-2xl mx-auto my-12 px-4 sm:px-0'>
+            <div className='mainLayout'>
                 <h1>404 - Author not found</h1>
             </div>
         );
@@ -35,7 +35,7 @@ const ConnectedAuthorList = ({authors, posts}) => {
         .filter(post => (post.author_id || '') === author.id);
 
     return (
-        <div className='max-w-2xl mx-auto my-12 px-4 sm:px-0'>
+        <div className='mainLayout'>
             {publishedPosts.length && <PaginatedPostsList
                 posts={publishedPosts}
                 includeEpicPost={true}/>}

@@ -19,7 +19,7 @@ const ConnectedHome = ({posts}) => {
         .sort((a, b) => new Date(b.publish_at) - new Date(a.publish_at));
 
     return (
-        <div className='max-w-2xl mx-auto my-12 px-4 sm:px-0'>
+        <div className='mainLayout'>
             {publishedPosts.length && <PaginatedPostsList
                 posts={publishedPosts}
                 includeEpicPost={true}/>}

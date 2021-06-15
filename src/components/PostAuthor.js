@@ -1,4 +1,5 @@
 import {connect} from 'react-redux';
+import {Link} from 'react-router-dom';
 
 const mapStateToProps = state => {
     return {
@@ -12,14 +13,14 @@ const ConnectedPostAuthor = ({authorId, authors, content = null}) => {
     return (
         <div className="flex">
             {hasImage ? <div className="w-10">
-                <a href={`/authors/${author?.slug}`}>
+                <Link to={`/authors/${author?.slug}`}>
                     <img className='h-8 w-8 rounded-full border border-gray-500' src={author.image_src}/>
-                </a>
+                </Link>
             </div> : null}
             <div className="w-auto flex flex-col items-start justify-center">
-                <a href={`/authors/${author?.slug}`} className='cursor-pointer hover:underline'>
+                <Link to={`/authors/${author?.slug}`} className='cursor-pointer hover:underline'>
                     <span className='font-bold'>{author?.name}</span>
-                </a>
+                </Link>
                 {content ? content : null}
             </div>
         </div>

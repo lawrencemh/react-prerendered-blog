@@ -1,5 +1,6 @@
 import {connect} from 'react-redux';
 import {useParams} from 'react-router-dom';
+import Paginator from 'components/Paginator';
 import PaginatedPostsList from 'components/PaginatedPostsList';
 
 const mapStateToProps = state => {
@@ -23,10 +24,12 @@ const ConnectedCategoryList = ({posts}) => {
         .filter(post => (post.category || '').toLowerCase() === reqCategory);
 
     return (
-        <div className='max-w-2xl mx-auto my-12 px-4 sm:px-0'>
-            {publishedPosts.length && <PaginatedPostsList
-                posts={publishedPosts}
-                includeEpicPost={true}/>}
+        <div className='mainLayout'>
+            {publishedPosts.length && <Paginator items={posts}>
+                <PaginatedPostsList
+                    posts={publishedPosts}
+                    includeEpicPost={true}/>
+            </Paginator>}
         </div>
     );
 };
