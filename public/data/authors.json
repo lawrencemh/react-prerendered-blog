@@ -3,14 +3,42 @@
         "id": "9a0b7759-86e1-4588-9d17-47ee9ad33ebf",
         "name": "Lawrence",
         "slug": "lawrence",
-        "image_src": "https://randomuser.me/api/portraits/lego/6.jpg",
+        "image_src": "https://images.generated.photos/Jq7xj_ZoYx3s-fdQEo5vTSC-4ayzL-M5DYexd4lTqDk/rs:fit:256:256/Z3M6Ly9nZW5lcmF0/ZWQtcGhvdG9zL3Yz/XzAzMTgyMzkuanBn.jpg",
         "github_url": null
     },
     {
         "id": "a78a326a-a27f-4d99-93b4-3cc24358daa2",
         "name": "Robin",
         "slug": "robin",
-        "image_src": "https://randomuser.me/api/portraits/lego/2.jpg",
+        "image_src": "https://images.generated.photos/t_0rQxMvy1WSYIeabQDZLrPMdcPUZUEtTPL6OmDNJwQ/rs:fit:256:256/Z3M6Ly9nZW5lcmF0/ZWQtcGhvdG9zL3Yz/XzAxOTkyMjYuanBn.jpg",
+        "github_url": null
+    },
+    {
+        "id": "b31fd77d-af7a-499d-af61-38e3fdfb3703",
+        "name": "Stanley Jimenez",
+        "slug": "Stanley-Jimenez",
+        "image_src": "https://images.generated.photos/jCVwTxwj-nglQPcizsr4qBshTPGlcU5hZZ6dCU1Nn8A/rs:fit:256:256/Z3M6Ly9nZW5lcmF0/ZWQtcGhvdG9zL3Yz/XzA0MzE3MzcuanBn.jpg",
+        "github_url": null
+    },
+    {
+        "id": "7c1b5707-e984-4d5a-898d-3188fd683cdd",
+        "name": "jennie west",
+        "slug": "jennie-west",
+        "image_src": "https://images.generated.photos/BqueBkKKubvKBwxkTvUhKCmtcJRQlnNwbvDDOUwrnyA/rs:fit:256:256/Z3M6Ly9nZW5lcmF0/ZWQtcGhvdG9zL3Yz/XzA4NjA3NzQuanBn.jpg",
+        "github_url": null
+    },
+    {
+        "id": "72f00dc5-1edb-4d34-ba67-b1ad20c8cfce",
+        "name": "george medina",
+        "slug": "george-medina",
+        "image_src": "https://images.generated.photos/vWgqfsd3kCdrcpAWzL1JAjMi5b_la6ZydDH_AObYYNk/rs:fit:512:512/wm:0.95:sowe:18:18:0.33/Z3M6Ly9nZW5lcmF0/ZWQtcGhvdG9zL3Yy/XzA2MjA4MDIuanBn.jpg",
+        "github_url": null
+    },
+    {
+        "id": "35d948ea-8a7b-41e6-8dbf-798f64e1b0dd",
+        "name": "george medina",
+        "slug": "george-medina",
+        "image_src": "https://images.generated.photos/VGixx6UdRn-Lq6xP0vnMxmM5MBEmaVhcW105RKmsSaY/rs:fit:256:256/Z3M6Ly9nZW5lcmF0/ZWQtcGhvdG9zL3Yy/XzAzODEzODcuanBn.jpg",
         "github_url": null
     }
 ]
