@@ -220,6 +220,7 @@ countries.forEach(country => {
                 'title'     : title,
                 'thumb_src' : imageSrc,
                 'author_id' : getRandomAuthorId(),
+                'md_src'    : '/data/posts/test.md',
                 'publish_at': getRandomDate('2015-01-01', '2023-01-01'),
                 'category'  : topic.category,
             };

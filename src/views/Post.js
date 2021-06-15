@@ -23,7 +23,9 @@ const ConnectedPost = ({posts}) => {
         setPostMeta(posts.find(post => post.permalink === permalink));
 
         if (permalink && !hasFetched) {
-            axios.get(`/data/posts/${permalink}.md`)
+            const mdPathToFetch = postMeta?.md_src || `/data/posts/${permalink}.md`;
+
+            axios.get(mdPathToFetch)
                 .then(response => {
                     setMarkdown(response.data);
                     setHasFetched(true);
