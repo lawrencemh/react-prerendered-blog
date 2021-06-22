@@ -13,10 +13,16 @@ const PaginationControls = ({currentPage, perPage, totalItems, onPageUpdate}) =>
     const pageNumbersSliceFrom    = Math.max(0, currentPageNumbersIndex - rangeFromIndex);
     const pageNumbersSliceTo      = Math.min(pageNumbers.length, currentPageNumbersIndex + rangeFromIndex + 1);
 
+    const handlePagination = jumpToPage => {
+        onPageUpdate(jumpToPage);
+        // Scroll to top to imitate real page change
+        window.scrollTo(0, 0);
+    };
+
     const Buttons = () => (
         <nav className="paginationControls" aria-label="Pagination">
             <button
-                onClick={() => onPageUpdate(Math.max(1, currentPage - 1))}
+                onClick={() => handlePagination(Math.max(1, currentPage - 1))}
                 className="paginationControls__btn">
                 <span className="sr-only">Previous</span>
                 &lt;
@@ -31,7 +37,7 @@ const PaginationControls = ({currentPage, perPage, totalItems, onPageUpdate}) =>
                     return (
                         <button
                             key={page}
-                            onClick={() => onPageUpdate(page)}
+                            onClick={() => handlePagination(page)}
                             className={className}>
                             {page}
                         </button>
@@ -39,7 +45,7 @@ const PaginationControls = ({currentPage, perPage, totalItems, onPageUpdate}) =>
                 })}
 
             <button
-                onClick={() => onPageUpdate(Math.min(totalPages, currentPage + 1))}
+                onClick={() => handlePagination(Math.min(totalPages, currentPage + 1))}
                 className="paginationControls__btn">
                 <span className="sr-only">Next</span>
                 &gt;
