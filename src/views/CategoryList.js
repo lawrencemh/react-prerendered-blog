@@ -1,7 +1,8 @@
+import {useState} from 'react';
 import {connect} from 'react-redux';
 import {useParams} from 'react-router-dom';
-import Paginator from 'components/Paginator';
 import PaginatedPostsList from 'components/PaginatedPostsList';
+import PaginationControls from 'components/PaginationControls';
 
 const mapStateToProps = state => {
     return {
@@ -11,9 +12,9 @@ const mapStateToProps = state => {
 
 
 const ConnectedCategoryList = ({posts}) => {
-    const urlParams      = useParams();
-    const reqCategory    = urlParams?.slug;
-    const publishedPosts = posts
+    const urlParams                     = useParams();
+    const reqCategory                   = urlParams?.category;
+    const publishedPosts                = posts
         .filter(post => {
             const postPublishedAt = new Date(post.publish_at);
             const today           = new Date();
@@ -22,14 +23,25 @@ const ConnectedCategoryList = ({posts}) => {
         })
         .sort((a, b) => new Date(b.publish_at) - new Date(a.publish_at))
         .filter(post => (post.category || '').toLowerCase() === reqCategory);
+    const [currentPage, setCurrentPage] = useState(1);
+    const [postsPerPage]                = useState(10);
+
+    const paginate = pageNumber => setCurrentPage(pageNumber);
 
     return (
         <div className='mainLayout'>
-            {publishedPosts.length && <Paginator items={posts}>
-                <PaginatedPostsList
-                    posts={publishedPosts}
-                    includeEpicPost={true}/>
-            </Paginator>}
+            {publishedPosts.length &&
+            <PaginatedPostsList
+                currentPage={currentPage}
+                posts={publishedPosts}
+                perPage={postsPerPage}
+                includeEpicPost={true}/>
+            }
+            {publishedPosts.length && <PaginationControls
+                currentPage={currentPage}
+                totalItems={publishedPosts.length}
+                onPageUpdate={paginate}
+                perPage={postsPerPage}/>}
         </div>
     );
 };

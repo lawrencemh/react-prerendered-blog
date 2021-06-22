@@ -12,17 +12,20 @@ const mapStateToProps = state => {
 };
 
 const ConnectedPost = ({posts}) => {
-    const urlParams                   = useParams();
     const [markdown, setMarkdown]     = useState('');
     const [hasFetched, setHasFetched] = useState(false);
     const [postMeta, setPostMeta]     = useState(null);
+    const urlParams                   = useParams();
+    const permalink                   = urlParams?.slug;
 
     useEffect(() => {
-        const permalink = urlParams?.slug;
+        const meta = posts.find(post => post.permalink === permalink);
 
-        setPostMeta(posts.find(post => post.permalink === permalink));
+        if (meta) setPostMeta(meta);
+    }, [posts, permalink]);
 
-        if (permalink && !hasFetched) {
+    useEffect(() => {
+        if (postMeta && !hasFetched) {
             const mdPathToFetch = postMeta?.md_src || `/data/posts/${permalink}.md`;
 
             axios.get(mdPathToFetch)
@@ -34,7 +37,7 @@ const ConnectedPost = ({posts}) => {
                     console.error(error);
                 });
         }
-    });
+    }, [postMeta, setHasFetched]);
 
     return (
         <div className='mainLayout'>

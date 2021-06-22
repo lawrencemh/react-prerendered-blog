@@ -20,7 +20,7 @@ function App() {
                     <Route path="/posts/:slug">
                         <Post/>
                     </Route>
-                    <Route path="/categories/:slug">
+                    <Route path="/categories/:category">
                         <CategoryList/>
                     </Route>
                     <Route path="/authors/:author">

@@ -67,3 +67,37 @@ h1, h2, h3 {
         @apply mt-8 px-0;
     }
 }
+
+.pagination {
+    &Controls {
+        @apply relative z-0 inline-flex rounded-md shadow-sm -space-x-px;
+
+        &__btn {
+            @apply relative inline-flex text-center justify-center items-center px-2 py-2 border border-gray-300 bg-white text-sm font-medium text-gray-500;
+
+            @screen sm {
+                @apply w-8 h-8;
+            }
+
+            &:first-of-type {
+                @apply rounded-l-md;
+            }
+
+            &:last-of-type {
+                @apply rounded-r-md;
+            }
+
+            &:hover {
+                @apply bg-gray-100;
+            }
+
+            &--active {
+                @apply text-white bg-primary border-primary;
+
+                &:hover {
+                    @apply text-white bg-primary border-primary;
+                }
+            }
+        }
+    }
+}

@@ -1,11 +1,16 @@
 import PostSummary from 'components/paginatedPosts/PostSummary';
 import EpicPostSummary from 'components/paginatedPosts/EpicPostSummary';
 
-const PaginatedPostsList = ({posts, page, perPage, showEpic}) => {
-    const ShouldShowEpic = posts.length > 0 && showEpic;
-    const postItems      = ShouldShowEpic
+const PaginatedPostsList = ({posts, currentPage, perPage, showEpic}) => {
+    const ShouldShowEpic   = posts.length > 0 && showEpic && currentPage === 1;
+    const postItems        = ShouldShowEpic
         ? posts.slice(1)
         : posts;
+    const indexOfLastPost  = currentPage * perPage;
+    const indexOfFirstPost = indexOfLastPost - perPage;
+    const currentPosts     = ShouldShowEpic
+        ? postItems.slice(indexOfFirstPost, indexOfLastPost - 1)
+        : postItems.slice(indexOfFirstPost, indexOfLastPost);
 
     return (
         <>
@@ -18,7 +23,7 @@ const PaginatedPostsList = ({posts, page, perPage, showEpic}) => {
                 <PostSummary post={posts[0]}/>
             </div> : null}
             <div className='w-full grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3'>
-                {postItems.map((post, index) => {
+                {currentPosts.map((post, index) => {
                     return (
                         <div key={index} className='mb-4'>
                             <PostSummary post={post}/>

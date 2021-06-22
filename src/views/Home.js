@@ -1,5 +1,7 @@
+import {useState} from 'react';
 import {connect} from 'react-redux';
 import PaginatedPostsList from 'components/PaginatedPostsList';
+import PaginationControls from 'components/PaginationControls';
 
 const mapStateToProps = state => {
     return {
@@ -18,11 +20,24 @@ const ConnectedHome = ({posts}) => {
         })
         .sort((a, b) => new Date(b.publish_at) - new Date(a.publish_at));
 
+    const [currentPage, setCurrentPage] = useState(1);
+    const [postsPerPage]                = useState(10);
+    const paginate                      = pageNumber => setCurrentPage(pageNumber);
+
     return (
         <div className='mainLayout'>
-            {publishedPosts.length && <PaginatedPostsList
+            {publishedPosts.length &&
+            <PaginatedPostsList
+                currentPage={currentPage}
                 posts={publishedPosts}
-                includeEpicPost={true}/>}
+                perPage={postsPerPage}
+                includeEpicPost={true}/>
+            }
+            {publishedPosts.length && <PaginationControls
+                currentPage={currentPage}
+                totalItems={publishedPosts.length}
+                onPageUpdate={paginate}
+                perPage={postsPerPage}/>}
         </div>
     );
 };
