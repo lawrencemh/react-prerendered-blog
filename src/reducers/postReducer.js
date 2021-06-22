@@ -8,11 +8,14 @@ const initialState = {
 };
 
 const expectedPostStructure = {
-    'permalink' : null,
-    'title'     : null,
-    'author_id' : null,
-    'publish_at': null,
-    'category'  : null,
+    permalink      : null,
+    title          : null,
+    author_id      : null,
+    thumb_src      : null,
+    md_src         : null,
+    minutes_to_read: null,
+    publish_at     : null,
+    category       : null,
 };
 
 const postReducer = (state = initialState, action) => {

@@ -216,13 +216,14 @@ countries.forEach(country => {
             let title            = sentenceTemplate.replace('{x}', country);
             let permalink        = title.replace(' ', '-');
             let post             = {
-                'permalink' : permalink,
-                'title'     : title,
-                'thumb_src' : imageSrc,
-                'author_id' : getRandomAuthorId(),
-                'md_src'    : '/data/posts/test.md',
-                'publish_at': getRandomDate('2015-01-01', '2023-01-01'),
-                'category'  : topic.category,
+                'permalink'      : permalink,
+                'title'          : title,
+                'thumb_src'      : imageSrc,
+                'author_id'      : getRandomAuthorId(),
+                'md_src'         : '/data/posts/test.md',
+                'minutes_to_read': Math.floor(Math.random() * 30) + 1,
+                'publish_at'     : getRandomDate('2015-01-01', '2023-01-01'),
+                'category'       : topic.category,
             };
 
             addPostToPostsFile(post);

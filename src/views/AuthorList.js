@@ -37,7 +37,7 @@ const ConnectedAuthorList = ({authors, posts}) => {
         .filter(post => (post.author_id || '') === author.id);
 
     const [currentPage, setCurrentPage] = useState(1);
-    const [postsPerPage]                = useState(10);
+    const [postsPerPage]                = useState(12);
     const paginate                      = pageNumber => setCurrentPage(pageNumber);
 
     return (

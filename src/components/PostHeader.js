@@ -9,14 +9,15 @@ const PostHeader = ({postMeta, showCategory, showReadTime}) => {
     const formattedDateString = date
         ? DateFormat(date, 'mmm d, yyyy')
         : null;
+    const readTime            = postMeta?.minutes_to_read;
 
     const authorProp = (
         <div className="w-full flex">
             <div className='pr-2'>
                 {formattedDateString}
             </div>
-            {showReadTime ? <div className='pr-2'>
-                &ndash; 9 min read
+            {showReadTime && (readTime > 0) ? <div className='pr-2'>
+                &ndash; {readTime} min read
             </div> : null}
             {showCategory ? <div>
                 &ndash; <Hashtag hashtag={postMeta?.category}/>

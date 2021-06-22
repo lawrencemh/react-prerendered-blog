@@ -21,7 +21,7 @@ const ConnectedHome = ({posts}) => {
         .sort((a, b) => new Date(b.publish_at) - new Date(a.publish_at));
 
     const [currentPage, setCurrentPage] = useState(1);
-    const [postsPerPage]                = useState(10);
+    const [postsPerPage]                = useState(12);
     const paginate                      = pageNumber => setCurrentPage(pageNumber);
 
     return (
