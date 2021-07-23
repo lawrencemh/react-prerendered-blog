@@ -1,4 +1,5 @@
 import axios from 'axios';
+import blogConfig from 'blogConfig';
 import {connect} from 'react-redux';
 import {useState, useEffect} from 'react';
 import {useParams} from 'react-router-dom';
@@ -27,6 +28,10 @@ const ConnectedPost = ({posts}) => {
     useEffect(() => {
         if (postMeta && !hasFetched) {
             const mdPathToFetch = postMeta?.md_src || `/data/posts/${permalink}.md`;
+
+            // set new page title
+            const newPageTitle = `${blogConfig.name} - ${postMeta?.title}`;
+            document.title     = newPageTitle;
 
             axios.get(mdPathToFetch)
                 .then(response => {

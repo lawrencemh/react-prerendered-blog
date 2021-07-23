@@ -1,5 +1,6 @@
-import {useState} from 'react';
+import {useState, useEffect} from 'react';
 import {connect} from 'react-redux';
+import blogConfig from 'blogConfig';
 import PaginatedPostsList from 'components/PaginatedPostsList';
 import PaginationControls from 'components/PaginationControls';
 
@@ -23,6 +24,11 @@ const ConnectedHome = ({posts}) => {
     const [currentPage, setCurrentPage] = useState(1);
     const [postsPerPage]                = useState(12);
     const paginate                      = pageNumber => setCurrentPage(pageNumber);
+
+    useEffect(() => {
+        const title    = blogConfig.name;
+        document.title = title;
+    });
 
     return (
         <div className='mainLayout'>

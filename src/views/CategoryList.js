@@ -1,5 +1,6 @@
-import {useState} from 'react';
+import blogConfig from 'blogConfig';
 import {connect} from 'react-redux';
+import {useEffect, useState} from 'react';
 import {useParams} from 'react-router-dom';
 import PaginatedPostsList from 'components/PaginatedPostsList';
 import PaginationControls from 'components/PaginationControls';
@@ -9,7 +10,6 @@ const mapStateToProps = state => {
         posts: state.post.items,
     };
 };
-
 
 const ConnectedCategoryList = ({posts}) => {
     const urlParams                     = useParams();
@@ -27,6 +27,12 @@ const ConnectedCategoryList = ({posts}) => {
     const [postsPerPage]                = useState(12);
 
     const paginate = pageNumber => setCurrentPage(pageNumber);
+
+    useEffect(() => {
+            // set new page title
+            const newPageTitle = `${blogConfig.name} - ${reqCategory}`;
+            document.title     = newPageTitle;
+    }, [reqCategory]);
 
     return (
         <div className='mainLayout'>

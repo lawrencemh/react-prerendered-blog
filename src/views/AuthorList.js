@@ -1,5 +1,6 @@
-import {useState} from 'react';
+import blogConfig from 'blogConfig';
 import {connect} from 'react-redux';
+import {useState, useEffect} from 'react';
 import {useParams} from 'react-router-dom';
 import PaginatedPostsList from 'components/PaginatedPostsList';
 import PaginationControls from 'components/PaginationControls';
@@ -17,6 +18,14 @@ const ConnectedAuthorList = ({authors, posts}) => {
     const author    = reqAuthor
         ? authors.find(author => (author.slug || '').toLowerCase() === reqAuthor.toLowerCase())
         : null;
+
+    useEffect(() => {
+        if (author) {
+            // set new page title
+            const newPageTitle = `${blogConfig.name} - ${author?.name}`;
+            document.title     = newPageTitle;
+        }
+    }, [author]);
 
     if (!author) {
         return (
