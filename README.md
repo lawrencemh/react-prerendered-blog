@@ -1,3 +1,5 @@
+![Screenshot](example.png?raw=true "Mockup and example of blog")
+
 # React prerendered blog
 
 A backend-free blog platform built on top of React.
