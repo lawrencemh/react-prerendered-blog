@@ -23,7 +23,8 @@
         "start": "craco start",
         "build": "craco build",
         "test": "craco test",
-        "eject": "react-scripts eject"
+        "eject": "react-scripts eject",
+        "test:seed": "./src/bin/generateFakePosts.js"
     },
     "browserslist": {
         "production": [
@@ -38,7 +39,7 @@
         ]
     },
     "devDependencies": {
-        "@tailwindcss/postcss7-compat": "^2.1.0",
+        "@tailwindcss/postcss7-compat": "npm:@tailwindcss/postcss7-compat@^2.1.0",
         "autoprefixer": "^9.8.6",
         "postcss": "^7.0.35",
         "redux-devtools": "^3.7.0",
