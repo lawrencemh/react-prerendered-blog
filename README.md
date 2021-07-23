@@ -184,7 +184,7 @@ For the second post we would do similar and add the content here `public/data/po
 
 Now if you run `yarn start` (or `npm run start`) you can test your new blog, authors and posts!
 
-##### Deployment
+## Deployment
 
 When you are ready to deploy, you can run the following command
 
