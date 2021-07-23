@@ -1,5 +1,7 @@
+#!/usr/bin/env node
+
 const axios   = require('axios');
-const authors = require('./public/data/authors');
+const authors = require('../../public/data/authors');
 const topics  = [
     // Hotels
     {
@@ -194,7 +196,7 @@ function getRandomDate(from, to) {
  */
 function addPostToPostsFile(post) {
     const fs  = require('fs');
-    let posts = require('./public/data/posts.json');
+    let posts = require('../../public/data/posts.json');
     posts.items.push(post);
 
     fs.writeFile('./public/data/posts.json', JSON.stringify(posts), err => {
