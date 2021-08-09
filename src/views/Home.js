@@ -1,17 +1,19 @@
-import {useState, useEffect} from 'react';
 import {connect} from 'react-redux';
 import blogConfig from 'blogConfig';
+import {useState, useEffect} from 'react';
 import PaginatedPostsList from 'components/PaginatedPostsList';
 import PaginationControls from 'components/PaginationControls';
+import PostLostFetchingPlaceholder from 'components/PostListFetchingPlaceholder';
 
 const mapStateToProps = state => {
     return {
-        posts: state.post.items,
+        posts       : state.post.items,
+        postsFetched: state.post.fetched,
     };
 };
 
 
-const ConnectedHome = ({posts}) => {
+const ConnectedHome = ({posts, postsFetched}) => {
     const publishedPosts = posts
         .filter(post => {
             const postPublishedAt = new Date(post.publish_at);
@@ -26,20 +28,21 @@ const ConnectedHome = ({posts}) => {
     const paginate                      = pageNumber => setCurrentPage(pageNumber);
 
     useEffect(() => {
-        const title    = blogConfig.name;
-        document.title = title;
+        document.title = blogConfig.name;
     });
 
     return (
         <div className='mainLayout'>
-            {publishedPosts.length &&
+            {!postsFetched ? <PostLostFetchingPlaceholder/> : null}
+
+            {postsFetched && publishedPosts.length &&
             <PaginatedPostsList
                 currentPage={currentPage}
                 posts={publishedPosts}
                 perPage={postsPerPage}
                 includeEpicPost={true}/>
             }
-            {publishedPosts.length && <PaginationControls
+            {postsFetched && publishedPosts.length && <PaginationControls
                 currentPage={currentPage}
                 totalItems={publishedPosts.length}
                 onPageUpdate={paginate}

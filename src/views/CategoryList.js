@@ -4,14 +4,16 @@ import {useEffect, useState} from 'react';
 import {useParams} from 'react-router-dom';
 import PaginatedPostsList from 'components/PaginatedPostsList';
 import PaginationControls from 'components/PaginationControls';
+import PostLostFetchingPlaceholder from 'components/PostListFetchingPlaceholder';
 
 const mapStateToProps = state => {
     return {
-        posts: state.post.items,
+        posts       : state.post.items,
+        postsFetched: state.post.fetched,
     };
 };
 
-const ConnectedCategoryList = ({posts}) => {
+const ConnectedCategoryList = ({posts, postsFetched}) => {
     const urlParams                     = useParams();
     const reqCategory                   = urlParams?.category;
     const publishedPosts                = posts
@@ -29,21 +31,21 @@ const ConnectedCategoryList = ({posts}) => {
     const paginate = pageNumber => setCurrentPage(pageNumber);
 
     useEffect(() => {
-            // set new page title
-            const newPageTitle = `${blogConfig.name} - ${reqCategory}`;
-            document.title     = newPageTitle;
+        document.title     = `${blogConfig.name} - ${reqCategory}`;
     }, [reqCategory]);
 
     return (
         <div className='mainLayout'>
-            {publishedPosts.length &&
+            {!postsFetched ? <PostLostFetchingPlaceholder/> : null}
+
+            {postsFetched && publishedPosts.length &&
             <PaginatedPostsList
                 currentPage={currentPage}
                 posts={publishedPosts}
                 perPage={postsPerPage}
                 includeEpicPost={true}/>
             }
-            {publishedPosts.length && <PaginationControls
+            {postsFetched && publishedPosts.length && <PaginationControls
                 currentPage={currentPage}
                 totalItems={publishedPosts.length}
                 onPageUpdate={paginate}

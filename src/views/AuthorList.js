@@ -5,15 +5,18 @@ import {useParams} from 'react-router-dom';
 import {normaliseUrlFromString} from 'utils/UrlHelper';
 import PaginatedPostsList from 'components/PaginatedPostsList';
 import PaginationControls from 'components/PaginationControls';
+import PostLostFetchingPlaceholder from 'components/PostListFetchingPlaceholder';
 
 const mapStateToProps = state => {
     return {
-        authors: state.author.items,
-        posts  : state.post.items,
+        authors       : state.author.items,
+        authorsFetched: state.author.fetched,
+        posts         : state.post.items,
+        postsFetched  : state.post.fetched,
     };
 };
 
-const ConnectedAuthorList = ({authors, posts}) => {
+const ConnectedAuthorList = ({authors, authorsFetched, posts, postsFetched}) => {
     const urlParams                           = useParams();
     const reqAuthor                           = urlParams?.author;
     const [author, setAuthor]                 = useState(null);
@@ -21,6 +24,7 @@ const ConnectedAuthorList = ({authors, posts}) => {
     const [currentPage, setCurrentPage]       = useState(1);
     const [postsPerPage]                      = useState(12);
     const paginate                            = pageNumber => setCurrentPage(pageNumber);
+    const itemsHaveFetched                    = authorsFetched && postsFetched;
 
     useEffect(() => {
         if (author) {
@@ -55,7 +59,7 @@ const ConnectedAuthorList = ({authors, posts}) => {
         if (published) setPublishedPosts(published);
     }, [authors, posts, author]);
 
-    if (!author) {
+    if (itemsHaveFetched && !author) {
         return (
             <div className='mainLayout'>
                 <h1>404 - Author not found</h1>
@@ -65,14 +69,16 @@ const ConnectedAuthorList = ({authors, posts}) => {
 
     return (
         <div className='mainLayout'>
-            {publishedPosts.length &&
+            {!itemsHaveFetched ? <PostLostFetchingPlaceholder/> : null}
+
+            {itemsHaveFetched && publishedPosts.length &&
             <PaginatedPostsList
                 currentPage={currentPage}
                 posts={publishedPosts}
                 perPage={postsPerPage}
                 includeEpicPost={true}/>
             }
-            {publishedPosts.length && <PaginationControls
+            {itemsHaveFetched && publishedPosts.length && <PaginationControls
                 currentPage={currentPage}
                 totalItems={publishedPosts.length}
                 onPageUpdate={paginate}
