@@ -9,9 +9,11 @@ const Header = () => {
 
     return (
         <header className="h-20 border-b border-gray-200 flex items-center">
-            <div className="px-4 sm:px-0 max-w-2xl w-full mx-auto grid grid-flow-col auto-cols-auto">
-                <div className="h-1 w-1"></div>
-                <div className="flex items-center justify-center text-3xl uppercase">
+            <div className="px-4 sm:px-0 max-w-2xl w-full mx-auto flex justify-space-around">
+                <div className="flex-1 hidden sm:flex">
+                    &nbsp;
+                </div>
+                <div className="flex flex-1 justify-self-center items-center justify-center text-3xl uppercase">
                     <Link to='/'>
                         {
                             hasLogo
@@ -20,7 +22,7 @@ const Header = () => {
                         }
                     </Link>
                 </div>
-                <div className="flex items-center justify-end tracking-wide">
+                <div className="hidden sm:flex flex-1 items-center justify-end tracking-wide">
                     {
                         hasExternalLink
                             ?
