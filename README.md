@@ -140,7 +140,7 @@ The properties available for each post are as follows:
 
 | Property      | Description |
 | ----------- | ----------- |
-| permalink   | [Required] The url path the post. This shouldn‘t contain spaces and needs to be unique for each post        |
+| permalink   | [Required] The url path the post. This **MUST NOT** contain spaces or special characters and needs to be unique for each post. e.g. `top-10-places-to-visit-in-rome`        |
 | title   | [Required] The post's title that will appear on the post page or in categories when the post is displayed        |
 | thumb_src   | The url path of the image thumbnail you wish to use for the post. As with the site logo, can be external or a local image in the public/images folder        |
 | author_id   | [Required] The author id (from `authors.json`) that wrote this post. This must exactly match the author id        |
