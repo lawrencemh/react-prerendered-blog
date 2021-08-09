@@ -1,10 +1,11 @@
 import {Link} from 'react-router-dom';
 import PostHeader from 'components/PostHeader';
+import {normaliseUrlFromString} from 'utils/UrlHelper';
 
 const EpicPostSummary = ({post}) => {
     return (
         <div key={post.permalink} className='w-full grid grid-cols-2 px-2'>
-            <Link to={`/posts/${post?.permalink}`}>
+            <Link to={normaliseUrlFromString(`/posts/${post?.permalink}`)}>
                 <img className='h-32 md:h-64 w-full object-cover border border-gray-100 shadow-sm'
                      src={post?.thumb_src || '/images/static/placeholder.svg'}
                      alt={post.title}/>

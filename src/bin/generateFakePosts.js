@@ -216,9 +216,11 @@ countries.forEach(country => {
         .then(imageSrc => {
             let sentenceTemplate = topic.sentences[Math.floor(Math.random() * topic.sentences.length)];
             let title            = sentenceTemplate.replace('{x}', country);
-            let permalink        = title.replace(' ', '-');
             let post             = {
-                'permalink'      : permalink,
+                'permalink'      : title
+                    .replace(/ /g, '-')
+                    .replace(/[^a-zA-Z0-9-]/g, '')
+                    .toLowerCase(),
                 'title'          : title,
                 'thumb_src'      : imageSrc,
                 'author_id'      : getRandomAuthorId(),

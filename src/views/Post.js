@@ -4,6 +4,7 @@ import {connect} from 'react-redux';
 import {useState, useEffect} from 'react';
 import {useParams} from 'react-router-dom';
 import PostHeader from 'components/PostHeader';
+import {normaliseUrlFromString} from 'utils/UrlHelper';
 import MarkdownRenderer from 'components/MarkdownRenderer';
 
 const mapStateToProps = state => {
@@ -20,7 +21,7 @@ const ConnectedPost = ({posts}) => {
     const permalink                   = urlParams?.slug;
 
     useEffect(() => {
-        const meta = posts.find(post => post.permalink === permalink);
+        const meta = posts.find(post => normaliseUrlFromString(post.permalink) === permalink);
 
         if (meta) setPostMeta(meta);
     }, [posts, permalink]);
@@ -30,8 +31,7 @@ const ConnectedPost = ({posts}) => {
             const mdPathToFetch = postMeta?.md_src || `/data/posts/${permalink}.md`;
 
             // set new page title
-            const newPageTitle = `${blogConfig.name} - ${postMeta?.title}`;
-            document.title     = newPageTitle;
+            document.title = `${blogConfig.name} - ${postMeta?.title}`;
 
             axios.get(mdPathToFetch)
                 .then(response => {

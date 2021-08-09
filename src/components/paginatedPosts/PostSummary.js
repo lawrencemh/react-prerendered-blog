@@ -1,10 +1,11 @@
 import {Link} from 'react-router-dom';
 import PostHeader from 'components/PostHeader';
+import {normaliseUrlFromString} from 'utils/UrlHelper';
 
 const PostSummary = ({post}) => {
     return (
         <div key={post.permalink} className='px-2'>
-            <Link to={`/posts/${post.permalink}`} className='hover:underline'>
+            <Link to={normaliseUrlFromString(`/posts/${post.permalink}`)} className='hover:underline'>
                 <img className='h-32 w-full object-cover border border-gray-100 shadow-sm'
                      src={post.thumb_src || '/images/static/placeholder.svg'}
                      alt={post.title}/>
