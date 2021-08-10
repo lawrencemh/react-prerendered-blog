@@ -22,7 +22,11 @@ const MarkdownRenderer = ({markdown}) => {
  * @returns String
  */
 const markdownToHtml = markdown => {
-    return marked(markdown);
+    const renderer = new marked.Renderer();
+
+    renderer.link  = (href, title, text) => `<a target="_blank" href="${href}" title="${title}" rel="nofollow">${text}</a>`;
+
+    return marked(markdown, {renderer: renderer});
 };
 
 MarkdownRenderer.defaultProps = {
