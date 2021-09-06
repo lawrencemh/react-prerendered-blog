@@ -1,4 +1,7 @@
+require('dotenv/config');
+
 const PrerenderSPAPlugin     = require('prerender-spa-plugin');
+const SitemapPlugin          = require('sitemap-webpack-plugin').default;
 const path                   = require('path');
 const posts                  = require('./public/data/posts.json');
 const authors                = require('./public/data/authors');
@@ -22,6 +25,7 @@ module.exports = {
     },
     webpack: {
         plugins: [
+            // This is where we configure which routes to prerender as static HTML for SEO purposes
             new PrerenderSPAPlugin({
                 routes   : [
                     '/',
@@ -33,6 +37,17 @@ module.exports = {
                 renderer : new PrerenderSPAPlugin.PuppeteerRenderer({
                     renderAfterTime: 250,
                 }),
+            }),
+
+            // This is where we configure sitemap.xml to be dynamically built
+            new SitemapPlugin({
+                base : process.env.REACT_APP_BLOG_URL ?? 'https://www.example.com',
+                paths: [
+                    '/',
+                    ...authorPages,
+                    ...blogPostsPages,
+                    ...categoryPages,
+                ],
             }),
         ],
     },
