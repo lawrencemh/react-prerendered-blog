@@ -186,6 +186,12 @@ For the second post we would do similar and add the content here `public/data/po
 
 Now if you run `yarn start` (or `npm run start`) you can test your new blog, authors and posts!
 
+##### Sitemap
+When you run `yarn build` a `sitemap.xml` will automatically be built for you in the build directory.
+This should help with SEO by making it easier for crawlers to crawl your blog and fine all your posts.
+In order for this to work correctly you will need to set the `REACT_APP_BLOG_URL` in your `.env` to be the
+URL of your blog (e.g. `https//www.myawesomeblog.com` or `http://blog.mystore.info`).
+
 ## Deployment
 
 When you are ready to deploy, you can run the following command
