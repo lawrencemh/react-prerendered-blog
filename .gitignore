@@ -17,6 +17,8 @@
 *.pem
 .next
 .idea
+public/robots.txt
+public/sitemap*
 
 # debug
 npm-debug.log*
