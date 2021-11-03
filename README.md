@@ -2,10 +2,10 @@
 
 # React prerendered blog
 
-A backend-free blog platform built on top of React.
+A backend-free blog platform built on top of React & NextJS, utilising Tailwind CSS & Typescript.
 
 React prerendered blog is a simple blog platform you can host without needing to rely on any backend systems. Using some
-simple configuration, you can write posts in markdown and configure all your posts and authors in two JSON files.
+simple configuration, you can write posts in markdown and configure your authors in separate markdown files.
 
 This is perfect for simple blogs with a few authors and posts although it is fully possible to host hundreds of posts 
 (although at that point this platform may outgrow your needs and you may need a more advanced server rendered platform).
@@ -54,142 +54,114 @@ That‘s it! next up is configuration, adding your first post and author and the
 
 There isn‘t too much to configure with your blog so this shouldn‘t take too long. Please note that 
 when updating your `.env` locally, you will have to rebuild for the changes to take effect. Additionally
-if you are running `start` to watch your changes dynamically, likewise you will have to exit this process and relaunch the
+if you are running `dev` to watch your changes dynamically, likewise you will have to exit this process and relaunch the
 start command for the changes to take effect.
 
 ##### Blog title & logo
-In your `.env` you can set your blog name by changing `REACT_APP_BLOG_NAME`. Additionally, you can swap out
-the logo by updating the `REACT_APP_LOGO_SRC` path. For the logo, you may simply wish to replace the one included
-in `public/images/static/example-logo.svg`, or add a new logo in your desired format in the static folder 
+In your `.env` you can set your blog name by changing `NEXT_PUBLIC_BLOG_NAME`. Additionally, you can swap out
+the logo by updating the `NEXT_PUBLIC_LOGO_SRC` path. For the logo, you may simply wish to replace the one included
+in `images/static/example-logo.svg`, or add a new logo in your desired format in the static folder 
 (remembering to update the path to reflect this). Alternatively, you can also base64 encode your logo and set this as 
-the value for `REACT_APP_LOGO_SRC`.
+the value for `NEXT_PUBLIC_LOGO_SRC`.
 
 ##### Header
 In the header of your blog (i.e. navbar), you can specify an external link should you wish to redirect users
-away to your main site. By default, this is disabled. But you can enable it by setting `REACT_APP_SHOW_EXTERNAL_LINK` to 
-`true`. You can change the link and text shown on the button by updating `REACT_APP_EXTERNAL_LINK_HREF` 
-and `REACT_APP_EXTERNAL_LINK_TEXT` respectfully.
+away to your main site. By default, this is disabled. But you can enable it by setting `NEXT_PUBLIC_SHOW_EXTERNAL_LINK` to 
+`true`. You can change the link and text shown on the button by updating `NEXT_PUBLIC_EXTERNAL_LINK_HREF` 
+and `NEXT_PUBLIC_EXTERNAL_LINK_TEXT` respectfully.
 
 ##### Favicons
 The favicons are located in the `public` directory. Should you wish to change them you will need to update
 the following:
 ```
 favicon.ico
+favicon.png
 favicon-16x16.png
 favicon-32x32.png
 ```
 
 To generate all the favicons automatically & different sizes there are many free online tools available with
-great documentation [[for example]](https://favicon.io/favicon-generator/). You can stick with simply updating 
-the basic favicons above, or add all the different versions the generator generates which adds better support
-for Android & iOS, however you may need to add the additional favicons to the `manifest.json` and `index.html`
-files in the public directory.
+great documentation [[for example]](https://favicon.io/favicon-generator/).
 
 ## Content
-Adding content should be fairly straight-forwards. In the public directory there is a `data` folder. This is 
-essentially your "database" of posts and authors and is loaded by the client dynamically. The two files you will
-need to make changes to here are:
-- `authors.json`
-- `posts.json`
-
-Additionally, there is a `posts` directory which contains the markdown for each of your blog posts.
+Adding content should be fairly straight-forwards. The two main directories you will need to use are `posts` 
+and `authors` which are both within the root directory of the project. Each post and author will consist of
+a single markdown `.md` file. At the top we can place some meta data that the app can read to help populate
+the database during build time.
 
 ##### Adding authors
-Each post requires an author. The `authors.json` file is simply an array of authors. Each author
-should be unique and should have a unique identifier. This can be an integer (e.g. 1,2,3) or a 
-[[UUID]](https://www.uuidgenerator.net/) (e.g. `4f9a1251-9282-49f5-afa4-d31359f4d5a5`). The identifier
-you use must be consistent with the author_id you later specify for each post.
+Each post requires an author. The `authors` directory is where these should go. It's best to use
+a simple, lowercase name for authors if possible (e.g. `peter.md` or `peter-jones.md`) as this will
+make it easier to reference in your post meta data. 
 
 The properties available for each author are as follows:
 
 | Property      | Description |
 | ----------- | ----------- |
-| id      | [Required] The unique identifier of the author in integer or UUID format       |
-| name   | [Required] The author's name that will appear on posts        |
-| slug   | [Required] The url path the author's posts can be found at e.g. blog.com/authors/peter-adams        |
-| image_src   | The url path of the author's profile pic. As with the site logo, can be external or a local image in the public/images folder        |
-| github_url   | The author's github URL - not currently used        |
+| name   | [Required] The author's name that will appear on posts. Here you can put the full, capitalised name.        |
+| thumb_src   | The url path of the author's profile pic. As with the site logo, can be external or a local image in the public/images folder.        |
+| github_url   | The author's github URL - not currently used.        |
 
-To add two example authors Hannah & Peter we could add the following to the `authors.json` file:
+To add an example author, we could add the following file in the `authors` directory. We will
+create a profile for Peter by creating `peter.md`:
+
 
 ```
-[
-    {
-        "id": "9a0b7759-86e1-4588-9d17-47ee9ad33ebf",
-        "name": "Hannah",
-        "slug": "hannah-jones",
-        "image_src": "/images/authors/hannah.jpg",
-        "github_url": null
-    },
-    {
-        "id": "a78a326a-a27f-4d99-93b4-3cc24358daa2",
-        "name": "Peter",
-        "slug": "peter-adams",
-        "image_src": "/images/authors/peter.jpg",
-        "github_url": null
-    }
-]
+
+---
+name: 'Peter Jones'
+thumb_src: 'images/authors/peter-jones2.jpg'
+---
+Hey, I'm Peter. This is my profile summary.
+
 ```
 
 ##### Adding posts
-The `posts.json` file is also an array of posts with each item containing metadata that will help
-us render the blog posts correctly. In addition to creating an item in the JSON file for each post, 
-you will also need to make a new, unique markdown file which contains the post content in `public/data/posts`.
+The `posts` directory is where we will create a markdown file for every post in our blog. Like the
+author files, we can specify some metadata that will help organise your posts during build time. Note
+that the slug of your post will match that of the filename you give to your post (e.g. `my-post.md` can be
+accessed at `https://yourblog.com/posts/my-post`). Like the authors filenames, it is likely a good idea
+to keep these simple and use a consistent naming convention such as kebab case with no spaces.
 
 The properties available for each post are as follows:
 
 | Property      | Description |
 | ----------- | ----------- |
-| permalink   | [Required] The url path the post. This **MUST NOT** contain spaces or special characters and needs to be unique for each post. e.g. `top-10-places-to-visit-in-rome`        |
-| title   | [Required] The post's title that will appear on the post page or in categories when the post is displayed        |
-| thumb_src   | The url path of the image thumbnail you wish to use for the post. As with the site logo, can be external or a local image in the public/images folder        |
-| author_id   | [Required] The author id (from `authors.json`) that wrote this post. This must exactly match the author id        |
-| md_src   | [Required] The filename of the markdown file that contains the post's content. This should be located in `public/data/posts`        |
+| title   | [Required] The post's title that will appear on the post page or in categories when the post is displayed.        |
+| thumb_src   | The url path of the image thumbnail you wish to use for the post. As with the site logo, can be external or a local image in the `/images` folder.        |
+| author_id   | [Required] The author filename (from `authors` dir) that wrote this post. This must exactly match the filename for example (`peter`).        |
 | minutes_to_read   | The number of estimated minutes to read. This should be an integer.      |
-| publish_at   | [Required] The date this post is published at. This must be in the format `yyyy-mm-dd` however you may with to account for timezones and use a `ISO-8601` formatted datetime. Using this field you can hide your post automatically until it is supposed to be published with the client handling the logic. Note that due to how this blog is processed by the client, theoretically the client could still retreive the post content beforehand so this is in no means a secure way of preventing a post appearing beforehand (e.g. competition winners).  |
+| publish_at   | [Required] The date this post is published at. This must be in the format `yyyy-mm-dd` however you may with to account for timezones and use a `ISO-8601` formatted datetime. Using this field you can hide your post automatically until it is supposed to be published with the client handling the logic. Note that you may need to rebuild your post on the publish date for your post in order for it to be built and published.  |
 | category   | The category for this post (e.g. `travel` or `programming`). This can be whatever you wish, make sure you consistently use the same spelling for other posts in the category otherwise they will not appear under the category list together.  |
 
-For Hannah & Peter (the example authors we made earlier) we can add two example posts to the `posts.json` file
+For Peter, let's create an example post. This post we can put in the `posts` directory as `my-trip-to-london.md`:
 
 ```
-[
-    {
-        "permalink": "hello-world",
-        "title": "Hello World!",
-        "thumb_src": "/images/posts/hello.jpg",
-        "author_id": "9a0b7759-86e1-4588-9d17-47ee9ad33ebf",
-        "md_src": "/data/posts/hello-world.md",
-        "minutes_to_read": 1,
-        "publish_at": "2019-10-01T23:00:00.000Z",
-        "category": "programming"
-    },
-    {
-        "permalink": "my-guide-to-great-cafes-in-las-vegas",
-        "title": "My guide to great cafes in Las Vegas",
-        "thumb_src": "/images/posts/las-vegas.png",
-        "author_id": "a78a326a-a27f-4d99-93b4-3cc24358daa2",
-        "md_src": "/data/posts/las-vegas.md",
-        "publish_at": "2015-12-14T00:00:00.000Z",
-        "category": "food"
-    }
-]
-```
 
-For the first post we would add a new markdown file `public/data/posts/hello-world.md` which can contain any markdown, for example:
+---
+title: 'My trip to London'
+publish_at: '2021-01-04T00:00:00.000Z'
+thumb_src: 'images/posts/london.jpg'
+author_id: 'peter'
+minutes_to_read: 3
+category: 'travel'
+---
+
+I recently had an opportunity at work to travel to London which I simply couldn't turn down! 
+In this post I'm going to summarise some of the amazing tourist hotspots to visit including
+some of my favourite restarants & cafés!
+
+Upon arriving at London Gatwick I ventured... 
 
 ```
-# Hello world!
-This is my first blog post
-```
 
-For the second post we would do similar and add the content here `public/data/posts/las-vegas.md`.
-
-Now if you run `yarn start` (or `npm run start`) you can test your new blog, authors and posts!
+Now if you run `yarn dev` (or `npm run dev`) you can test your new blog, authors and posts! If everything
+worked correctly you should see something resembling a blog.
 
 ##### Sitemap
 When you run `yarn build` a `sitemap.xml` will automatically be built for you in the build directory.
 This should help with SEO by making it easier for crawlers to crawl your blog and fine all your posts.
-In order for this to work correctly you will need to set the `REACT_APP_BLOG_URL` in your `.env` to be the
+In order for this to work correctly you will need to set the `NEXT_PUBLIC_BLOG_URL` in your `.env` to be the
 URL of your blog (e.g. `https//www.myawesomeblog.com` or `http://blog.mystore.info`).
 
 ## Deployment
@@ -202,6 +174,15 @@ yarn build
 npm run build
 ```
 
-This will build your blog in the `/build` directory. You can simply upload this to a webserver if you wish or
+Then you can use a hosting service such as Vercel to host the app using `yarn start`.
+
+If you want to extract your site into a separate build folder to host on a simple HTTP server, S3 bucket 
+or platform like render.com, you can run the following:
+
+```
+yarn export
+```
+
+This will build your blog in the `/out` directory. You can simply upload this to a webserver if you wish or
 you can use more some CI/CD to deploy the project from your GIT repository when you push your updates. You can 
 use the likes of render.com or GitHub Actions to build your site and upload your assets.
