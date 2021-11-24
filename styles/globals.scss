@@ -1,0 +1,115 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,700;1,400&display=swap');
+
+p, h1, h2, h3, h4, h5, h6 {
+  @apply mt-4;
+}
+
+:root {
+  font-size: 20px;
+}
+
+body {
+  @apply text-gray-800 antialiased font-body;
+}
+
+.markDown {
+  &__container {
+    pre {
+      @apply mt-4 p-3 bg-gray-200 text-black rounded-md overflow-x-scroll;
+    }
+
+    blockquote {
+      @apply mt-4 italic pl-3 border-gray-200 border-l-8;
+    }
+
+    p > code {
+      @apply p-0.5 rounded bg-red-100 text-red-800;
+    }
+
+    img {
+      @apply mx-auto;
+    }
+
+    a {
+      @apply underline;
+
+      &:hover {
+        @apply no-underline;
+      }
+    }
+  }
+}
+
+h1 {
+  @apply text-3xl font-bold;
+}
+
+h2 {
+  @apply text-2xl;
+}
+
+h3 {
+  @apply text-lg leading-tight tracking-tight;
+}
+
+h4 {
+  @apply text-lg uppercase font-light;
+}
+
+h5 {
+  @apply text-xs uppercase font-light;
+}
+
+h1, h2, h3 {
+  @apply font-bold;
+}
+
+.mainLayout {
+  @apply max-w-2xl mx-auto mb-12 mt-4 px-4;
+
+  @screen sm {
+    @apply mt-8 px-0;
+  }
+}
+
+.pagination {
+  &Controls {
+    @apply relative z-0 inline-flex rounded-md shadow-sm -space-x-px;
+
+    &__btn {
+      @apply relative inline-flex text-center justify-center items-center px-2 py-2 border border-gray-300 bg-white text-sm font-medium text-gray-500;
+
+      @screen sm {
+        @apply w-8 h-8;
+      }
+
+      &:first-of-type {
+        @apply rounded-l-md;
+      }
+
+      &:last-of-type {
+        @apply rounded-r-md;
+      }
+
+      &:hover:not(&--disabled):not(&--active) {
+        @apply bg-gray-100;
+      }
+
+      &--active {
+        @apply text-white bg-primary border-primary;
+
+        &:hover {
+          @apply text-white bg-primary border-primary;
+        }
+      }
+
+      &--disabled {
+        @apply cursor-default;
+      }
+    }
+  }
+}
