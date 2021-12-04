@@ -16,13 +16,6 @@ const Header = ({blogName, hasLogo, hasExternalLink, externalLink, externalCta, 
             alt={blogName}
         />
         : <span>{blogName}</span>);
-    const exLinkHtml: any = hasExternalLink
-        ?
-        <a className='header--extCta rounded-full text-white text-xs py-2 px-4 bg-primary hover:bg-primary-400 transition-colors'
-           target='_blank'
-           rel="noreferrer"
-           href={externalLink}>{externalCta}</a>
-        : false;
 
     return (
         <header className="h-20 border-b border-gray-200 flex items-center overflow-y-hidden">
@@ -39,7 +32,11 @@ const Header = ({blogName, hasLogo, hasExternalLink, externalLink, externalCta, 
                 </div>
 
                 <div className="hidden sm:flex flex-1 items-center justify-end tracking-wide">
-                    {exLinkHtml}
+                    {hasExternalLink &&
+                    <a className='header--extCta rounded-full text-white text-xs py-2 px-4 bg-primary hover:bg-primary-400 transition-colors'
+                       target='_blank'
+                       rel="noreferrer"
+                       href={externalLink}>{externalCta}</a>}
                 </div>
             </div>
         </header>

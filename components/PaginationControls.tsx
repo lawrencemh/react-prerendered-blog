@@ -64,7 +64,7 @@ const PaginationControls = ({paginated, setPage}: {
                 </p>
             </div>
             <div className="w-full sm:w-1/2 flex items-center justify-center">
-                {shouldShowButtons ? <Buttons/> : null}
+                {shouldShowButtons && <Buttons/>}
             </div>
         </div>
     );

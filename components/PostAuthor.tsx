@@ -11,11 +11,11 @@ const PostAuthor = ({author, content}: {
 
     return (
         <div className="postAuthor flex">
-            {hasImage ? <div className="postAuthor__container w-10">
+            {hasImage && <div className="postAuthor__container w-10">
                 <Link href={`/authors/${author.id}`}>
                     <img className='h-8 w-8 rounded-full border border-gray-500' src={imageSrc}/>
                 </Link>
-            </div> : null}
+            </div>}
             <div className="w-auto flex flex-col items-start justify-center">
                 <span className='cursor-pointer hover:underline'>
                     <Link href={`/authors/${author.id}`}>

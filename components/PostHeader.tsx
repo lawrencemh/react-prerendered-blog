@@ -11,12 +11,8 @@ const PostHeader = ({postMeta, showCategory, showReadTime, author}: {
     showReadTime: boolean,
     author: AuthorEntity
 }) => {
-    const date = postMeta.publishAt
-        ? new Date(postMeta.publishAt)
-        : null;
-    const formattedDateString = date
-        ? DateFormat(date, 'mmm d, yyyy')
-        : null;
+    const date = postMeta.publishAt && new Date(postMeta.publishAt);
+    const formattedDateString = date && DateFormat(date, 'mmm d, yyyy');
     const readTime: number | null = postMeta.minutesToRead;
     const shouldShowReadTime: boolean = !!(showReadTime && readTime && (readTime > 0));
 
@@ -28,9 +24,9 @@ const PostHeader = ({postMeta, showCategory, showReadTime, author}: {
             {shouldShowReadTime
                 ? <div className='pr-2'>&ndash; {readTime} min read</div>
                 : null}
-            {showCategory ? <div>
+            {showCategory && <div>
                 &ndash; <Hashtag hashtag={postMeta.category}/>
-            </div> : null}
+            </div>}
         </div>
     );
 

@@ -12,13 +12,13 @@ const PaginatedPostsList = ({posts, showEpic}: {
     return (
         <>
             {/*Medium screen epic*/}
-            {showEpic ? <div className='w-full mb-4 hidden sm:block'>
+            {showEpic && <div className='w-full mb-4 hidden sm:block'>
                 <EpicPostSummary post={posts[0]}/>
-            </div> : null}
+            </div>}
             {/*Fall back for mobile*/}
-            {showEpic ? <div className='w-full mb-4 block sm:hidden'>
+            {showEpic && <div className='w-full mb-4 block sm:hidden'>
                 <PostSummary post={posts[0]}/>
-            </div> : null}
+            </div>}
             <div className='w-full grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3'>
                 {postSummaries.map((post, index) => {
                     return (
