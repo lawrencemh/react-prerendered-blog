@@ -1,6 +1,6 @@
 import {PaginatedCollection} from "@/lib/Paginator";
 
-const PaginationControls = ({paginated, setPage}: {
+export default ({paginated, setPage}: {
     paginated: PaginatedCollection,
     setPage: any
 }) => {
@@ -69,5 +69,3 @@ const PaginationControls = ({paginated, setPage}: {
         </div>
     );
 };
-
-export default PaginationControls;

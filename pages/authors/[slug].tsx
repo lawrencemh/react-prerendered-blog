@@ -9,8 +9,7 @@ import PaginationControls from "@/components/PaginationControls";
 import {useState} from "react";
 import {AuthorEntity, getAllAuthorIds, getAuthorData} from "@/lib/Authors";
 
-
-const Authors = ({author, publishedPosts}: {
+export default ({author, publishedPosts}: {
     author: AuthorEntity,
     publishedPosts: PostEntity[]
 }) => {
@@ -34,8 +33,6 @@ const Authors = ({author, publishedPosts}: {
         </Layout>
     )
 };
-
-export default Authors
 
 export async function getStaticPaths() {
     const paths: object[] = getAllAuthorIds()

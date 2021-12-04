@@ -1,7 +1,6 @@
 import Link from 'next/link'
-import Image from 'next/image'
 
-const Header = ({blogName, hasLogo, hasExternalLink, externalLink, externalCta, logoSrc}: {
+export default ({blogName, hasLogo, hasExternalLink, externalLink, externalCta, logoSrc}: {
     blogName: string,
     hasLogo: boolean,
     hasExternalLink: boolean,
@@ -42,5 +41,3 @@ const Header = ({blogName, hasLogo, hasExternalLink, externalLink, externalCta, 
         </header>
     );
 };
-
-export default Header;

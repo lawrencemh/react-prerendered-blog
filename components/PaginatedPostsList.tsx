@@ -32,7 +32,6 @@ const PaginatedPostsList = ({posts, showEpic}: {
     );
 };
 
-
 PaginatedPostsList.defaultProps = {
     posts: [],
     page: 1,

@@ -8,8 +8,7 @@ import {DEFAULT_ITEMS_PER_PAGE} from "@/constants/pagination";
 import PaginationControls from "@/components/PaginationControls";
 import {useState} from "react";
 
-
-const Authors = ({publishedPosts}: {
+export default ({publishedPosts}: {
     publishedPosts: PostEntity[]
 }) => {
     const [page, setPage] = useState(1);
@@ -32,8 +31,6 @@ const Authors = ({publishedPosts}: {
         </Layout>
     )
 };
-
-export default Authors
 
 export async function getStaticPaths() {
     const categories: string[] = await getAllPostCategories();

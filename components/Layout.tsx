@@ -2,9 +2,9 @@ import Head from 'next/head'
 import Header from '@/components/Header'
 import config from '@/configs/blogConfig';
 
-export default function Layout({children}: {
+export default ({children}: {
     children: React.ReactNode
-}) {
+}) => {
     const hasLogo: boolean = !!(config?.logo && config.logo.length > 0);
     const hasExternalLink: boolean = !!(config?.externalLink?.show === true && config?.externalLink?.href);
     const externalLink: string = config?.externalLink?.href || '#';
@@ -35,4 +35,4 @@ export default function Layout({children}: {
             <main className='mainLayout'>{children}</main>
         </div>
     )
-}
+};

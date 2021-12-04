@@ -1,8 +1,8 @@
 import Link from 'next/link'
-import {AuthorEntity} from "@/lib/Authors";
 import {ReactElement} from "react";
+import {AuthorEntity} from "@/lib/Authors";
 
-const PostAuthor = ({author, content}: {
+export default ({author, content}: {
     author: AuthorEntity,
     content: ReactElement
 }) => {
@@ -27,5 +27,3 @@ const PostAuthor = ({author, content}: {
         </div>
     );
 };
-
-export default PostAuthor;

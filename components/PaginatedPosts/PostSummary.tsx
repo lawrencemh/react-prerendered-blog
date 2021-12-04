@@ -2,7 +2,7 @@ import Link from "next/link";
 import {PostEntity} from "@/lib/Posts";
 import PostHeader from '@/components/PostHeader';
 
-const PostSummary = ({post}: {
+export default ({post}: {
     post: PostEntity
 }) => {
     return (
@@ -28,5 +28,3 @@ const PostSummary = ({post}: {
         </div>
     );
 };
-
-export default PostSummary;

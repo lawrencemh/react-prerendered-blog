@@ -8,8 +8,7 @@ import {DEFAULT_ITEMS_PER_PAGE} from "@/constants/pagination";
 import PaginationControls from "@/components/PaginationControls";
 import {useState} from "react";
 
-
-const Home = ({publishedPosts}: {
+export default ({publishedPosts}: {
     publishedPosts: PostEntity[]
 }) => {
     const [page, setPage] = useState(1);
@@ -32,8 +31,6 @@ const Home = ({publishedPosts}: {
         </Layout>
     )
 };
-
-export default Home
 
 export async function getStaticProps() {
     const publishedPosts: PostEntity[] = await getAllPosts();
