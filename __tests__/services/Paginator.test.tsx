@@ -1,5 +1,6 @@
 import each from "jest-each";
-import {paginate, PaginatedCollection} from "../../lib/Paginator";
+import {paginate} from "@/services/PaginatorService";
+import {PaginatedCollection} from "@/types/types";
 
 describe('Paginator', () => {
     it('returns the correct array size', () => {

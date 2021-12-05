@@ -1,4 +1,5 @@
-import {getAllPostIds, getAllPosts, getPostData, PostEntity, postsDirectory} from '../../lib/Posts';
+import {getAllPostIds, getPostData, postsDirectory} from '@/services/PostService';
+import {PostEntity} from "@/types/types";
 
 jest.mock('fs');
 

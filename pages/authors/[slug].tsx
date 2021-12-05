@@ -1,13 +1,13 @@
 import Head from 'next/head'
 import Layout from '@/components/Layout';
 import config from '@/configs/blogConfig';
-import {paginate} from '@/lib/Paginator';
-import {getAllPostsForAuthor} from "@/lib/Posts";
+import {paginate} from '@/services/PaginatorService';
+import {getAllPostsForAuthor} from "@/services/PostService";
 import PaginatedPostsList from "@/components/PaginatedPostsList";
 import {DEFAULT_ITEMS_PER_PAGE} from "@/constants/pagination";
 import PaginationControls from "@/components/PaginationControls";
 import {useState} from "react";
-import {getAllAuthorIds, getAuthorData} from "@/lib/Authors";
+import {getAllAuthorIds, getAuthorData} from "@/services/AuthorService";
 import {AuthorEntity, PaginatedCollection, PostEntity} from "@/types/types";
 
 export default ({author, publishedPosts}: {

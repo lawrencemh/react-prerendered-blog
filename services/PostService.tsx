@@ -3,7 +3,7 @@ import path from 'path'
 import matter from 'gray-matter'
 import remark from 'remark'
 import html from 'remark-html'
-import {getAuthorData} from "./Authors";
+import {getAuthorData} from "@/services/AuthorService";
 import {PostEntity, PostMeta} from "@/types/types";
 
 export const postsDirectory: string = path.join(process.cwd(), 'posts');

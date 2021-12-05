@@ -1,9 +1,9 @@
 import Head from 'next/head'
 import Layout from '@/components/Layout';
 import PostHeader from '@/components/PostHeader';
-import {getAuthorData} from "@/lib/Authors";
+import {getAuthorData} from "@/services/AuthorService";
 import MarkdownRenderer from "@/components/MarkdownRenderer";
-import {getAllPostIds, getPostData} from '@/lib/Posts';
+import {getAllPostIds, getPostData} from '@/services/PostService';
 import {AuthorEntity, PostEntity} from "@/types/types";
 
 const Post = ({postData, author}: {
