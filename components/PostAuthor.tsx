@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import {ReactElement} from "react";
-import {AuthorEntity} from "@/lib/Authors";
+import {AuthorEntity} from "@/types/types";
 
 export default ({author, content}: {
     author: AuthorEntity,

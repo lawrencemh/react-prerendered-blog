@@ -1,8 +1,8 @@
-import {PaginatedCollection} from "@/lib/Paginator";
+import {PaginatedCollection} from "@/types/types";
 
 export default ({paginated, setPage}: {
     paginated: PaginatedCollection,
-    setPage: any
+    setPage: Function
 }) => {
     const shouldShowButtons: boolean = paginated.totalPages > 1;
     const pageNumbers: number[] = [

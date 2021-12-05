@@ -3,7 +3,8 @@ import path from 'path'
 import matter from 'gray-matter'
 import remark from 'remark'
 import html from 'remark-html'
-import {AuthorEntity, getAuthorData} from "./Authors";
+import {getAuthorData} from "./Authors";
+import {PostEntity, PostMeta} from "@/types/types";
 
 export const postsDirectory: string = path.join(process.cwd(), 'posts');
 
@@ -97,20 +98,4 @@ const parsePostContentToHtml = async (rawPostMd: string): Promise<string> => {
         .process(rawPostMd);
 
     return processedContent.toString();
-}
-
-export type PostMeta = {
-    authorId: string,
-    title: string,
-    publishAt: string,
-    thumbSrc: string | null,
-    minutesToRead: number | null,
-    category: string,
-}
-
-export type PostEntity = {
-    id: string,
-    content?: string,
-    meta: PostMeta,
-    author: AuthorEntity,
 }

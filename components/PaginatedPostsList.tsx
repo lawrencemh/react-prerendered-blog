@@ -1,6 +1,6 @@
-import {PostEntity} from "@/lib/Posts";
 import PostSummary from "@/components/PaginatedPosts/PostSummary";
 import EpicPostSummary from "@/components/PaginatedPosts/EpicPostSummary";
+import {PostEntity} from "@/types/types";
 
 const PaginatedPostsList = ({posts, showEpic}: {
     posts: PostEntity[],

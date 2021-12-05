@@ -1,9 +1,8 @@
 import {ReactElement} from "react";
 import DateFormat from "dateformat";
-import {PostMeta} from '@/lib/Posts';
-import {AuthorEntity} from "@/lib/Authors";
 import PostAuthor from "@/components/PostAuthor";
 import Hashtag from "@/components/PostHeader/Hashtag";
+import {AuthorEntity, PostMeta} from "@/types/types";
 
 const PostHeader = ({postMeta, showCategory, showReadTime, author}: {
     postMeta: PostMeta,

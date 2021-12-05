@@ -1,19 +1,9 @@
 import fs from 'fs'
 import path from 'path'
 import matter from 'gray-matter'
+import {AuthorEntity, AuthorMeta} from "@/types/types";
 
 export const authorsDirectory: string = path.join(process.cwd(), 'authors');
-
-export type AuthorMeta = {
-    name: string,
-    thumbSrc: string | null,
-}
-
-export type AuthorEntity = {
-    id: string,
-    content?: string,
-    meta: AuthorMeta,
-}
 
 export const getAllAuthorIds = (): string[] => {
     const fileNames = fs.readdirSync(authorsDirectory);

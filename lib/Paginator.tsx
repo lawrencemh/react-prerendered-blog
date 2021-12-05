@@ -1,16 +1,4 @@
-import {PostEntity} from "@/lib/Posts";
-
-export type PaginatedCollection = {
-    items: PostEntity[],
-    totalPages: number,
-    totalItems: number,
-    itemsPerPage: number,
-    currentPage: number,
-    controls: {
-        pageOptionsLeft: number[],
-        pageOptionsRight: number[],
-    }
-}
+import {PaginatedCollection, PostEntity} from "@/types/types";
 
 export const paginate = (items: PostEntity[], perPage: number, page: number, controlsSpread: number = 2): PaginatedCollection => {
     const lastIndex = perPage * page;

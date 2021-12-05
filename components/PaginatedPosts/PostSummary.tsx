@@ -1,6 +1,6 @@
 import Link from "next/link";
-import {PostEntity} from "@/lib/Posts";
 import PostHeader from '@/components/PostHeader';
+import {PostEntity} from "@/types/types";
 
 export default ({post}: {
     post: PostEntity

@@ -1,10 +1,10 @@
 import Head from 'next/head'
-import type {NextPage} from 'next'
 import Layout from '@/components/Layout';
 import PostHeader from '@/components/PostHeader';
-import {AuthorEntity, getAuthorData} from "@/lib/Authors";
+import {getAuthorData} from "@/lib/Authors";
 import MarkdownRenderer from "@/components/MarkdownRenderer";
-import {getAllPostIds, getPostData, PostEntity} from '@/lib/Posts';
+import {getAllPostIds, getPostData} from '@/lib/Posts';
+import {AuthorEntity, PostEntity} from "@/types/types";
 
 const Post = ({postData, author}: {
     postData: PostEntity,

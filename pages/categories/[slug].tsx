@@ -1,12 +1,13 @@
 import Head from 'next/head'
 import Layout from '@/components/Layout';
 import config from '@/configs/blogConfig';
-import {paginate, PaginatedCollection} from '@/lib/Paginator';
-import {getAllPostCategories, getAllPostsForCategory, PostEntity} from "@/lib/Posts";
+import {paginate} from '@/lib/Paginator';
+import {getAllPostCategories, getAllPostsForCategory} from "@/lib/Posts";
 import PaginatedPostsList from "@/components/PaginatedPostsList";
 import {DEFAULT_ITEMS_PER_PAGE} from "@/constants/pagination";
 import PaginationControls from "@/components/PaginationControls";
 import {useState} from "react";
+import {PaginatedCollection, PostEntity} from "@/types/types";
 
 export default ({publishedPosts}: {
     publishedPosts: PostEntity[]
