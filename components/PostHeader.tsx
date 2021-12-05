@@ -1,9 +1,8 @@
 import {ReactElement} from "react";
 import DateFormat from "dateformat";
-import {PostMeta} from '@/lib/Posts';
-import {AuthorEntity} from "@/lib/Authors";
 import PostAuthor from "@/components/PostAuthor";
 import Hashtag from "@/components/PostHeader/Hashtag";
+import {AuthorEntity, PostMeta} from "@/types/types";
 
 const PostHeader = ({postMeta, showCategory, showReadTime, author}: {
     postMeta: PostMeta,
@@ -11,12 +10,8 @@ const PostHeader = ({postMeta, showCategory, showReadTime, author}: {
     showReadTime: boolean,
     author: AuthorEntity
 }) => {
-    const date = postMeta.publishAt
-        ? new Date(postMeta.publishAt)
-        : null;
-    const formattedDateString = date
-        ? DateFormat(date, 'mmm d, yyyy')
-        : null;
+    const date = postMeta.publishAt && new Date(postMeta.publishAt);
+    const formattedDateString = date && DateFormat(date, 'mmm d, yyyy');
     const readTime: number | null = postMeta.minutesToRead;
     const shouldShowReadTime: boolean = !!(showReadTime && readTime && (readTime > 0));
 
@@ -28,9 +23,9 @@ const PostHeader = ({postMeta, showCategory, showReadTime, author}: {
             {shouldShowReadTime
                 ? <div className='pr-2'>&ndash; {readTime} min read</div>
                 : null}
-            {showCategory ? <div>
+            {showCategory && <div>
                 &ndash; <Hashtag hashtag={postMeta.category}/>
-            </div> : null}
+            </div>}
         </div>
     );
 

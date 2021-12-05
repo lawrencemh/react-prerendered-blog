@@ -1,16 +1,16 @@
 import Head from 'next/head'
 import Layout from '@/components/Layout';
 import config from '@/configs/blogConfig';
-import {paginate, PaginatedCollection} from '@/lib/Paginator';
-import {getAllPostsForAuthor, PostEntity} from "@/lib/Posts";
+import {paginate} from '@/services/PaginatorService';
+import {getAllPostsForAuthor} from "@/services/PostService";
 import PaginatedPostsList from "@/components/PaginatedPostsList";
 import {DEFAULT_ITEMS_PER_PAGE} from "@/constants/pagination";
 import PaginationControls from "@/components/PaginationControls";
 import {useState} from "react";
-import {AuthorEntity, getAllAuthorIds, getAuthorData} from "@/lib/Authors";
+import {getAllAuthorIds, getAuthorData} from "@/services/AuthorService";
+import {AuthorEntity, PaginatedCollection, PostEntity} from "@/types/types";
 
-
-const Authors = ({author, publishedPosts}: {
+export default ({author, publishedPosts}: {
     author: AuthorEntity,
     publishedPosts: PostEntity[]
 }) => {
@@ -34,8 +34,6 @@ const Authors = ({author, publishedPosts}: {
         </Layout>
     )
 };
-
-export default Authors
 
 export async function getStaticPaths() {
     const paths: object[] = getAllAuthorIds()

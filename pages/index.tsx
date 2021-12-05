@@ -1,15 +1,15 @@
 import Head from 'next/head'
-import Layout from '../components/Layout';
-import config from '../configs/blogConfig';
-import {paginate, PaginatedCollection} from '@/lib/Paginator';
-import {getAllPosts, PostEntity} from "@/lib/Posts";
+import Layout from '@/components/Layout';
+import config from '@/configs/blogConfig';
+import {paginate} from '@/services/PaginatorService';
+import {getAllPosts} from "@/services/PostService";
 import PaginatedPostsList from "@/components/PaginatedPostsList";
 import {DEFAULT_ITEMS_PER_PAGE} from "@/constants/pagination";
 import PaginationControls from "@/components/PaginationControls";
 import {useState} from "react";
+import {PaginatedCollection, PostEntity} from "@/types/types";
 
-
-const Home = ({publishedPosts}: {
+export default ({publishedPosts}: {
     publishedPosts: PostEntity[]
 }) => {
     const [page, setPage] = useState(1);
@@ -32,8 +32,6 @@ const Home = ({publishedPosts}: {
         </Layout>
     )
 };
-
-export default Home
 
 export async function getStaticProps() {
     const publishedPosts: PostEntity[] = await getAllPosts();

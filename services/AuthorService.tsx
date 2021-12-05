@@ -1,27 +1,17 @@
 import fs from 'fs'
 import path from 'path'
 import matter from 'gray-matter'
+import {AuthorEntity, AuthorMeta} from "@/types/types";
 
 export const authorsDirectory: string = path.join(process.cwd(), 'authors');
 
-export type AuthorMeta = {
-    name: string,
-    thumbSrc: string | null,
-}
-
-export type AuthorEntity = {
-    id: string,
-    content?: string,
-    meta: AuthorMeta,
-}
-
-export function getAllAuthorIds(): string[] {
+export const getAllAuthorIds = (): string[] => {
     const fileNames = fs.readdirSync(authorsDirectory);
 
     return fileNames.map(fileName => fileName.replace(/\.md$/, ''));
 }
 
-export async function getAuthorData(id: string): Promise<AuthorEntity> {
+export const getAuthorData = async (id: string): Promise<AuthorEntity> => {
     const fullPath = path.join(authorsDirectory, `${id}.md`);
     const fileContents = fs.readFileSync(fullPath, 'utf8');
 
@@ -36,7 +26,7 @@ export async function getAuthorData(id: string): Promise<AuthorEntity> {
     }
 }
 
-export function getAuthorMetaData(matterResult: matter.GrayMatterFile<string>): AuthorMeta {
+export const getAuthorMetaData = (matterResult: matter.GrayMatterFile<string>): AuthorMeta => {
     const meta = matterResult.data;
 
     return {

@@ -1,8 +1,8 @@
 import Link from "next/link";
-import {PostEntity} from "@/lib/Posts";
 import PostHeader from '@/components/PostHeader';
+import {PostEntity} from "@/types/types";
 
-const PostSummary = ({post}: {
+export default ({post}: {
     post: PostEntity
 }) => {
     return (
@@ -28,5 +28,3 @@ const PostSummary = ({post}: {
         </div>
     );
 };
-
-export default PostSummary;

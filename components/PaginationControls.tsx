@@ -1,8 +1,8 @@
-import {PaginatedCollection} from "@/lib/Paginator";
+import {PaginatedCollection} from "@/types/types";
 
-const PaginationControls = ({paginated, setPage}: {
+export default ({paginated, setPage}: {
     paginated: PaginatedCollection,
-    setPage: any
+    setPage: Function
 }) => {
     const shouldShowButtons: boolean = paginated.totalPages > 1;
     const pageNumbers: number[] = [
@@ -64,10 +64,8 @@ const PaginationControls = ({paginated, setPage}: {
                 </p>
             </div>
             <div className="w-full sm:w-1/2 flex items-center justify-center">
-                {shouldShowButtons ? <Buttons/> : null}
+                {shouldShowButtons && <Buttons/>}
             </div>
         </div>
     );
 };
-
-export default PaginationControls;

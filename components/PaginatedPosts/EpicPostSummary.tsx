@@ -1,8 +1,8 @@
 import Link from "next/link";
 import PostHeader from '@/components/PostHeader';
-import {PostEntity} from "@/lib/Posts";
+import {PostEntity} from "@/types/types";
 
-const EpicPostSummary = ({post}: {
+export default ({post}: {
     post: PostEntity
 }) => {
     return (
@@ -28,5 +28,3 @@ const EpicPostSummary = ({post}: {
         </div>
     );
 };
-
-export default EpicPostSummary;
